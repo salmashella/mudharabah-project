@@ -157,7 +157,7 @@
                         {
                             if(data)
                             {
-                                if(data.Status == "2")
+                                if(data.Status == 2)
                                 {
                                     if(data.status_pembayaran == 2)
                                     {
@@ -200,7 +200,7 @@
                             }
                             else
                             {
-                                alert('No Rekening tidak ditemukan ');
+                                document.getElementById("alert").innerHTML = "<div class='alert alert-danger'>Data Tidak Ditemukan</div>";
                                 $("#Id_Pembiayaan").attr('value',"");
                                 $("#Nama").attr('value',"");
                                 $("#Jumlah_Pinjaman").attr('value',"");

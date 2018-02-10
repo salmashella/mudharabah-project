@@ -113,7 +113,7 @@ class COJaminan extends Controller
         $data = ModelJaminan::where('Id_Pembiayaan', $id)->first();
 
 
-        $status_jaminan = $request->input('status_jaminan');
+        $status_jaminan = $request->status_jaminan;
 
 
         $data->status_jaminan = $status_jaminan;

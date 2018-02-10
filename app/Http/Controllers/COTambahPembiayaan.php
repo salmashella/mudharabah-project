@@ -21,8 +21,13 @@ class COTambahPembiayaan extends Controller
         $getnasabah = ModelTambahNasabah::where('Id_Nasabah', $get->Id_Nasabah)->first();
 //        $datapegawai = ModelTambahPegawai::where('Id_Pegawai', $id)->first();
 
+        if(!empty($datapembayaran)){
+            $angsuran = $datapembayaran->angsuran_ke + 1;
+        }
+        else{
+            $angsuran = 1;
+        }
 
-        $angsuran = $datapembayaran->angsuran_ke + 1;
 
         $sisabayar = $datapembiayaan->Besar_Pembiayaan - ($datapembiayaan->angsuran_perbulan * $angsuran);
             if($sisabayar = 0)
