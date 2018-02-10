@@ -136,6 +136,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li>
 									<a href="/lihatpembiayaan">Daftar Pembiayaan</a>
 								</li>
+
 							</ul>
 							<!-- //nav-second-level -->
 						</li>
@@ -158,18 +159,18 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							</ul>
 							<!-- //nav-second-level -->
 						</li>
-                        <li>
-                            <a href="#"><i class="fa fa-file-text-o nav_icon"></i>Tambah Saldo Rekening<span class="nav-badge-btm"></span><span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level collapse">
-                                <li>
-                                    <a href="/lihatrekening">Tambah Saldo</a>
-                                </li>
+                        {{--<li>--}}
+                            {{--<a href="#"><i class="fa fa-file-text-o nav_icon"></i>Tambah Saldo Rekening<span class="nav-badge-btm"></span><span class="fa arrow"></span></a>--}}
+                            {{--<ul class="nav nav-second-level collapse">--}}
+                                {{--<li>--}}
+                                    {{--<a href="/lihatrekening">Tambah Saldo</a>--}}
+                                {{--</li>--}}
                                 {{--<li>--}}
                                     {{--<a href="/lihatnasabah">Lihat Nasabah</a>--}}
                                 {{--</li>--}}
-                            </ul>
-                            <!-- //nav-second-level -->
-                        </li>
+                            {{--</ul>--}}
+                            {{--<!-- //nav-second-level -->--}}
+                        {{--</li>--}}
                         {{--<li>--}}
                             {{--<a href="#"><i class="fa fa-file-text-o nav_icon"></i>Pembiayaan<span class="nav-badge-btm"></span><span class="fa arrow"></span></a>--}}
                             {{--<ul class="nav nav-second-level collapse">--}}

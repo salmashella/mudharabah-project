@@ -25,6 +25,7 @@
                                 <div class="form-group">
                                     <label for="focusedinput" >ID Nasabah</label>
                                     <input type="text" class="form-control1" id="Id_Nasabah" name="Id_Nasabah" readonly>
+                                    <input type="hidden" class="form-control1" id="" name="Id_Pegawai" readonly value="{{Session::get('Id_Pegawai')}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="focusedinput" >Nama Nasabah</label>
@@ -108,12 +109,12 @@
                                             <input type="text" class="form-control1" id="focusedinput" placeholder="Jaminan Atas Nama" name="atas_nama" required="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="radio" required >Status Jaminan</label>
-                                            <div class="radio block">
-                                                <label><input type="radio" name="status_jaminan" value="Belum Diterima" checked> Belum Diterima </label>
-                                                <label><input type="radio" name="status_jaminan" value="Di BMT"> Di BMT </label>
-                                                <label><input type="radio" name="status_jaminan" value="Sudah Dikembalikan"> Sudah Dikembalikan</label>
-                                            </div>
+                                            <label for="selector1" >Status Jaminan</label>
+                                            <select name="status_jaminan"  id="selector1" class="form-control1" required="">
+                                                <option value="Sudah Diterima">Sudah Diterima</option>
+                                                <option value="Sudah Dikembalikan">Sudah Dikembalikan</option>
+
+                                            </select>
                                         </div>
 
                                         </div>

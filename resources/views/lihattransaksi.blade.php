@@ -20,7 +20,7 @@
                                             <tr>
                                                 <th>No.</th>
                                                 <th>Nomor Rekening</th>
-                                                <th>Nominal Saldo</th>
+                                                <th>Nominal Transaksi</th>
                                                 <th>Keterangan</th>
                                                 <th>Tanggal Terjadi</th>
                                             </tr>

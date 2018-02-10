@@ -16,6 +16,19 @@
 CREATE DATABASE IF NOT EXISTS `mudharabah` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `mudharabah`;
 
+-- Dumping structure for table mudharabah.tb_admin
+CREATE TABLE IF NOT EXISTS `tb_admin` (
+  `id` int(11) NOT NULL,
+  `id_admin` varchar(10) NOT NULL DEFAULT '',
+  `Id_Pegawai` varchar(10) NOT NULL DEFAULT '',
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id_admin`),
+  KEY `id` (`id`),
+  KEY `Id_Nasabah` (`Id_Pegawai`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Data exporting was unselected.
 -- Dumping structure for table mudharabah.tb_datapasangan
 CREATE TABLE IF NOT EXISTS `tb_datapasangan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -33,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `tb_datapasangan` (
   PRIMARY KEY (`Id_Pasangan`),
   KEY `id` (`id`),
   KEY `Id_Nasabah` (`Id_Nasabah`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table mudharabah.tb_datapenghasilan
@@ -54,38 +67,34 @@ CREATE TABLE IF NOT EXISTS `tb_datapenghasilan` (
   PRIMARY KEY (`Id_Penghasilan`),
   KEY `id` (`id`),
   KEY `Id_Nasabah` (`Id_Nasabah`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table mudharabah.tb_jaminan
 CREATE TABLE IF NOT EXISTS `tb_jaminan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Id_Pembiayaan` varchar(10) NOT NULL DEFAULT '',
-  `jenis_jaminan` varchar(50) NOT NULL,
-  `no_id_jaminan` varchar(10) NOT NULL,
-  `atas_nama` varchar(50) NOT NULL,
-  `status_jaminan` varchar(50) NOT NULL,
+  `jenis_jaminan` varchar(50) NOT NULL DEFAULT '',
+  `no_id_jaminan` varchar(50) NOT NULL DEFAULT '',
+  `atas_nama` varchar(50) NOT NULL DEFAULT '',
+  `status_jaminan` varchar(50) NOT NULL DEFAULT '',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`no_id_jaminan`),
   KEY `id` (`id`),
   KEY `Id_Pembiayaan` (`Id_Pembiayaan`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- Data exporting was unselected.
 -- Dumping structure for table mudharabah.tb_jurnal
 CREATE TABLE IF NOT EXISTS `tb_jurnal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Id_Pembiayaan` varchar(10) NOT NULL,
-  `jenis_jaminan` varchar(10) NOT NULL,
-  `no_id_jaminan` varchar(10) NOT NULL,
-  `atas_nama` varchar(10) NOT NULL,
-  `status_jaminan` tinytext NOT NULL,
+  `No_Rekening` varchar(10) NOT NULL DEFAULT '',
+  `nominal_transaksi` varchar(50) NOT NULL DEFAULT '',
+  `keterangan` varchar(100) NOT NULL DEFAULT '',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`no_id_jaminan`),
   KEY `id` (`id`),
-  KEY `Id_Pembiayaan` (`Id_Pembiayaan`)
+  KEY `Id_Pembiayaan` (`No_Rekening`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
@@ -113,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `tb_nasabah` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`Id_Nasabah`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table mudharabah.tb_neraca
@@ -130,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `tb_neraca` (
   KEY `id` (`id`),
   KEY `No_Rekening` (`No_Rekening`),
   KEY `Id_Pegawai` (`Id_Pegawai`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table mudharabah.tb_pegawai
@@ -152,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `tb_pegawai` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`Id_Pegawai`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table mudharabah.tb_pembayaran
@@ -178,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `tb_pembayaran` (
   KEY `Id_Pembiayaan` (`Id_Pembiayaan`),
   KEY `No_Rekening` (`No_Rekening`),
   KEY `Id_Pegawai` (`Id_Pegawai`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table mudharabah.tb_pembiayaan
@@ -187,6 +196,7 @@ CREATE TABLE IF NOT EXISTS `tb_pembiayaan` (
   `Id_Pembiayaan` varchar(10) NOT NULL DEFAULT '',
   `No_Rekening` varchar(10) NOT NULL DEFAULT '',
   `Id_Nasabah` varchar(10) NOT NULL DEFAULT '',
+  `Id_Pegawai` varchar(10) NOT NULL DEFAULT '',
   `tujuan_akad` varchar(100) NOT NULL DEFAULT '',
   `Jangka_Waktu` int(11) NOT NULL,
   `Besar_Pembiayaan` int(11) NOT NULL,
@@ -201,8 +211,9 @@ CREATE TABLE IF NOT EXISTS `tb_pembiayaan` (
   PRIMARY KEY (`Id_Pembiayaan`),
   KEY `id` (`id`),
   KEY `No_Rekening` (`No_Rekening`),
-  KEY `Id_Nasabah` (`Id_Nasabah`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+  KEY `Id_Nasabah` (`Id_Nasabah`),
+  KEY `Id_Pegawai` (`Id_Pegawai`)
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table mudharabah.tb_perusahaan
@@ -222,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `tb_perusahaan` (
   PRIMARY KEY (`Id_Perusahaan`),
   KEY `id` (`id`),
   KEY `Id_Nasabah` (`Id_Nasabah`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 -- Dumping structure for table mudharabah.tb_rekening
@@ -237,9 +248,18 @@ CREATE TABLE IF NOT EXISTS `tb_rekening` (
   PRIMARY KEY (`No_Rekening`),
   KEY `id` (`id`),
   KEY `Id_Nasabah` (`Id_Nasabah`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
+-- Dumping structure for trigger mudharabah.tb_admin_trigger
+SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+DELIMITER //
+CREATE TRIGGER `tb_admin_trigger` BEFORE INSERT ON `tb_admin` FOR EACH ROW BEGIN
+	set new.id_admin = concat((Select lpad((select count(1)+1 FROM tb_admin),7, 'ADM000')));
+END//
+DELIMITER ;
+SET SQL_MODE=@OLDTMP_SQL_MODE;
+
 -- Dumping structure for trigger mudharabah.tb_datapasangan_trigger
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 DELIMITER //
@@ -254,15 +274,6 @@ SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,ERROR_FOR_DIVISIO
 DELIMITER //
 CREATE TRIGGER `tb_datapenghasilan_trigger` BEFORE INSERT ON `tb_datapenghasilan` FOR EACH ROW BEGIN
 	set new.Id_Penghasilan = concat((Select lpad((select count(1)+1 FROM tb_datapenghasilan),7, 'DPH000')));
-END//
-DELIMITER ;
-SET SQL_MODE=@OLDTMP_SQL_MODE;
-
--- Dumping structure for trigger mudharabah.tb_jaminan_trigger
-SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
-DELIMITER //
-CREATE TRIGGER `tb_jaminan_trigger` BEFORE INSERT ON `tb_jaminan` FOR EACH ROW BEGIN
-	set new.no_id_jaminan = concat((Select lpad((select count(1)+1 FROM tb_jaminan),7, 'JM0000')));
 END//
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;

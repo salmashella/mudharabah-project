@@ -9,6 +9,7 @@ use App\ModelTambahNasabah;
 use App\ModelJaminan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class COTambahPembiayaan extends Controller
 {
@@ -37,7 +38,7 @@ class COTambahPembiayaan extends Controller
         else if ($datapembiayaan->Status == 2){
             $data = [
                 "No_Rekening"=>$get->No_Rekening,
-//                "Id_Pegawai"=>$get->Id_Pegawai,
+//                "Id_Pegawai"=>Session::get('Id_Pegawai'),
                 "Nama"=>$getnasabah->Nama,
                 "Besar_Pembiayaan"=>$get->Besar_Pembiayaan,
                 "angsuran_ke" => $angsuran,
@@ -46,7 +47,7 @@ class COTambahPembiayaan extends Controller
                 "rekomendasi_bayar" => $datapembiayaan->angsuran_perbulan,
                 "Status" => 2,
 //                "status_pembayaran" => $datapembayaran->status_pembayaran,
-                "keterangan" => $keterangan->keterangan,
+//                "keterangan" => $keterangan->keterangan,
             ];
         }
         else{
@@ -98,6 +99,7 @@ class COTambahPembiayaan extends Controller
     {
         $No_Rekening = $request->input('No_Rekening');
         $Id_Nasabah = $request->input('Id_Nasabah');
+        $Id_Pegawai = $request->input('Id_Pegawai');
         // $Nama_Nasabah = $request->input('Nama_Nasabah');
         $tujuan_akad = $request->input('tujuan_akad');
         $Jangka_Waktu = $request->input('Jangka_Waktu');
@@ -106,35 +108,28 @@ class COTambahPembiayaan extends Controller
         $Nisbah_BMT = $request->input('Nisbah_BMT');
         $angsuran_perbulan = $request->input('angsuran_perbulan');
         $tanggal_pengajuan = $request->input('tanggal_pengajuan');
-        $Jenis_Jaminan = $request->input('Jenis_Jaminan');
-        $No_Jaminan = $request->input('No_Jaminan');
+//        $Jenis_Jaminan = $request->input('Jenis_Jaminan');
+//        $No_Jaminan = $request->input('No_Jaminan');
         $Status = $request->input('Status');
         $keterangan = $request->input('keterangan');
 //        $status_pembayaran = $request->input('status_pembayaran');
 
-        ModelNeraca::create(
+        ModelNeraca::create(array(
             'No_Rekening' => $No_Rekening,
-            'Id_Pegawai' => $Id_Pegawai,
+            'Id_Pegawai' => Session::get('Id_Pegawai'),
             'debit' => 0,
             'kredit' => $Besar_Pembiayaan,
             'keterangan' => 'Pembiayaan akad Mudharabah dengan No Rekening ' . $No_Rekening
-        ]);
+        ));
 
         $punyajaminan = $request->input('punyajaminan');
-        if ($punyajaminan == 1) {
-            $jenis_jaminan = $request->input('jenis_jaminan');
-            $atas_nama = $request->input('atas_nama');
-            $status_jaminan = $request->input('status_jaminan');
-        } else {
-            $jenis_jaminan = '-';
-            $atas_nama = '-';
-            $status_jaminan = '-';
-        }
 
 
         $datatambahpembiayaan = ModelPembiayaan::create([
+
             'No_Rekening' => $No_Rekening,
             'Id_Nasabah' => $Id_Nasabah,
+            'Id_Pegawai' => $Id_Pegawai,
             'tujuan_akad' => $tujuan_akad,
             'Jangka_Waktu' => $Jangka_Waktu,
             'Besar_Pembiayaan' => $Besar_Pembiayaan,
@@ -142,24 +137,58 @@ class COTambahPembiayaan extends Controller
             'Nisbah_BMT' => $Nisbah_BMT,
             'angsuran_perbulan' => $angsuran_perbulan,
             'tanggal_pengajuan' => $tanggal_pengajuan,
-            'Jenis_Jaminan' => $Jenis_Jaminan,
-            'No_Jaminan' => $No_Jaminan,
+//            'Jenis_Jaminan' => $Jenis_Jaminan,
+//            'No_Jaminan' => $No_Jaminan,
             'Status' => $Status,
             'keterangan' => $keterangan,
 //            'status_pembayaran' => $status_pembayaran,
+
         ]);
 
+
+        //select data dari Model pembiayaan, where id = $datatambahpembiayaan->id. kalo udah panggil ke id pembiayaan yang dibawah
+        $datapembiayaan = ModelPembiayaan::where('id',$datatambahpembiayaan->id)->first();
+
+
+        if ($punyajaminan == 1) {
+            $jenis_jaminan = $request->input('jenis_jaminan');
+            $atas_nama = $request->input('atas_nama');
+            $status_jaminan = $request->input('status_jaminan');
+            $no_id_jaminan = $request->input('no_id_jaminan');
+            $Id_Pembiayaan = $datapembiayaan->Id_Pembiayaan;
+            //insert dulu datanya disini
+
+            $datatambahjaminan = ModelJaminan::create([
+                'jenis_jaminan' => $jenis_jaminan,
+                'atas_nama' => $atas_nama,
+                'no_id_jaminan' => $no_id_jaminan,
+                'status_jaminan' => $status_jaminan,
+                'Id_Pembiayaan' => $Id_Pembiayaan,
+
+            ]);
+
+        } else {
+            $jenis_jaminan = '-';
+            $atas_nama = '-';
+            $no_id_jaminan = '-';
+            $status_jaminan = '-';
+        }
+
+
+
+
         if ($datatambahpembiayaan) {
-            $data = ModelJaminan::all()->where('Id_Nasabah', '=', $Id_Nasabah)->first();
+
+            $data = ModelJaminan::where('Id_Pembiayaan', '=', $datapembiayaan->Id_Pembiayaan)->first();
 
 
-//            DISINI. KATANYA "TRYING TO GET PROPERTY OF NON OBJECT. LINE 155. TRUS DATA JAMINANNYA BIAR KKE INPUT KE TABEL JAMINAN.
             $Id_Pembiayaan = $data->Id_Pembiayaan;
 
-            $datajaminan = ModelPasangan::create([
+            $datajaminan = ModelJaminan::create([
                 'Id_Pembiayaan' => $Id_Pembiayaan,
                 'jenis_jaminan' => $jenis_jaminan,
                 'atas_nama' => $atas_nama,
+                'no_id_jaminan' => $no_id_jaminan,
                 'status_jaminan' => $status_jaminan,
             ]);
 

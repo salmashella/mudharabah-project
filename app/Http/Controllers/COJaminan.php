@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\ModelPembiayaan;
-use App\ModelRekening;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
+use App\ModelPembiayaan;
+use App\ModelJaminan;
 
-class COLihatPembayaran extends Controller
+class COJaminan extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -22,20 +21,11 @@ class COLihatPembayaran extends Controller
         if(!session('isAdminLoggedIn')) {
             return Redirect::to('login');
         }
-        $result = DB::Table('tb_pembayaran')
-            ->select('tb_pembayaran.*')
-            ->get();
 
-        $title = "Daftar Pembayaran";
-        $content = view('lihatpembayaran');
+        $title = "Jaminan";
+        $content = view('editjaminan');
 
-        $data = array(
-            'title' => $title,
-            'content' => $content
-        );
-
-        View::share('result', $result);
-        return view('header', $data);
+        return view('header', compact('title', 'content'));
     }
 
     /**
@@ -67,7 +57,36 @@ class COLihatPembayaran extends Controller
      */
     public function show($id)
     {
+        //
+        if(!session('isAdminLoggedIn')) {
+            return Redirect::to('login');
+        }
 
+//        $id = base64_decode($id);
+
+//        $result = DB::Table('tb_jaminan')
+//            ->select('tb_jaminan.*')
+//            //->where('tb_Pegawai.Id_Pegawai' )
+//            ->where('tb_jaminan.Id_Pembiayaan', '=', $id)
+//            ->first();
+//
+//        $title = "Home";
+
+        $id = base64_decode($id);
+
+        $result = DB::Table('tb_pembiayaan')
+            ->join('tb_jaminan', 'tb_jaminan.Id_Pembiayaan', '=' ,'tb_pembiayaan.Id_Pembiayaan')
+            ->select('tb_jaminan.*', 'tb_pembiayaan.*')
+            ->where('tb_pembiayaan.Id_Pembiayaan', '=', $id)
+            ->first();
+
+        $title = "Home";
+        $content = view('editjaminan');
+
+        View::share([
+            'title' => $title
+        ]);
+        return view('editjaminan', compact('result'));
     }
 
     /**
@@ -91,6 +110,27 @@ class COLihatPembayaran extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = ModelJaminan::where('Id_Pembiayaan', $id)->first();
+
+
+        $status_jaminan = $request->input('status_jaminan');
+
+
+        $data->status_jaminan = $status_jaminan;
+
+
+        $result = $data->save();
+
+        if($result) {
+            return Redirect::to('/lihatpembiayaan')->with('message', 'Data pembiayaan dengan ID ' . $id . ' berhasil disetujui');
+        }
+        else {
+            return Redirect::to('/lihatpembiayaan')->with('message', 'Data pembiayaan dengan ID ' . $id . ' gagal disetujui');
+        }
+
+
+
+//
     }
 
     /**

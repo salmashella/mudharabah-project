@@ -9,7 +9,8 @@
 
         <div id="div-print">
             <h4>
-                <center>Detail Pembiayaan dengan ID Pembiayaan {{ $id_pembiayaan }} </center>
+                <center>Detail Pembiayaan dengan ID Pembiayaan {{ $Id_Pembiayaan }} </center>
+
             </h4>
             <div class="detail-body row container col-md-12">
                 <div class="panel-group tool-tips widget-shadow">
@@ -77,22 +78,22 @@
                             : {{ 'Rp. ' . number_format($data_pembiayaan->angsuran_perbulan) }}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            Jenis jaminan
-                        </div>
-                        <div class="col-md-9">
-                            : {{ $data_pembiayaan->Jenis_Jaminan }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            Nomor Jaminan
-                        </div>
-                        <div class="col-md-9">
-                            : {{ $data_pembiayaan->No_Jaminan }}
-                        </div>
-                    </div>
+                    {{--<div class="row">--}}
+                        {{--<div class="col-md-3">--}}
+                            {{--Jenis jaminan--}}
+                        {{--</div>--}}
+                        {{--<div class="col-md-9">--}}
+                            {{--: {{ $data_pembiayaan->Jenis_Jaminan }}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="row">--}}
+                        {{--<div class="col-md-3">--}}
+                            {{--Nomor Jaminan--}}
+                        {{--</div>--}}
+                        {{--<div class="col-md-9">--}}
+                            {{--: {{ $data_pembiayaan->No_Jaminan }}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     {{--<div class="row">--}}
                         {{--<div class="col-md-3">--}}
                             {{--Nomor Jaminan--}}

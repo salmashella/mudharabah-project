@@ -77,14 +77,18 @@
 
                                                             @if(session('Jabatan') == 1)
                                                                 <a class="btn-sm btn-info" href="/verifikasipembiayaan/{{ base64_encode($value->Id_Pembiayaan) }}">Verifikasi</a><br><br>
+                                                                <a class="btn-sm btn-danger" href="/detailpembiayaan/{{ base64_encode($value->Id_Pembiayaan) }}">Detail</a>
+                                                            @else
+                                                                {
+
+                                                                    <a class="btn-sm btn-info" href="/editjaminan/{{ base64_encode($value->Id_Pembiayaan) }}">Jaminan</a>
+                                                                    <a class="btn-sm btn-warning" href="/suratperjanjian/{{base64_encode($value->Id_Pembiayaan)}}">Print Dokumen Akad</a>
+                                                                }
                                                             @endif
-                                                            {{--@if(session('Jabatan') == 3)--}}
-                                                            {{--<a class="btn-sm btn-info" href="/formpembayaran/{{ base64_encode($value->Id_Pembiayaan) }}">Lakukan Pembayaran</a><br><br>--}}
-                                                            {{--@endif--}}
-                                                            <a class="btn-sm btn-danger" target="_blank" href="/detailpembiayaan/{{ base64_encode($value->Id_Pembiayaan) }}">Detail</a>
+
                                                         </td>
                                                     </tr>
-                                                    <?php $a++ ?>
+                                                        <?php $a++ ?>
                                                 @endforeach
                                             @endif
 

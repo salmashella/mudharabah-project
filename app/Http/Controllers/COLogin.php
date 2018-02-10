@@ -54,8 +54,10 @@ class COLogin extends Controller
             if ($data-> Status == "1")
             {
 
+                //tambahin id pegawai disini
                 $dataSession = array(
                     'isAdminLoggedIn' => true,
+                    'Id_Pegawai' => $data->Id_Pegawai,
                     'Nama_Pegawai' => $data->Nama_Pegawai,
                     'Alamat' => $data->Alamat,
                     'Jabatan' => $data->Jabatan,

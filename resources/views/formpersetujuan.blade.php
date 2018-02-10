@@ -51,29 +51,6 @@
 
                             </div>
 
-                            <div class="form-group">
-                                <label for="focusedinput" >Bentuk jaminan pembiayaan</label>
-                                <select id="Jenis_Jaminan" name="Jenis_Jaminan" class="form-control1">
-                                    @if($result->Jenis_Jaminan == "BPKB Motor")
-                                        <option value="BPKB Motor" selected>BPKB Motor</option>
-                                        <option value="BPKB Mobil">BPKB Mobil</option>
-                                        <option value="Surat Tanah">Sertifikat Rumah</option>
-                                    @elseif($result->Jenis_Jaminan == "BPKB Mobil")
-                                        <option value="BPKB Motor">BPKB Motor</option>
-                                        <option value="BPKB Mobil" selected>BPKB Mobil</option>
-                                        <option value="Surat Tanah">Sertifikat Rumah</option>
-                                    @elseif($result->Jenis_Jaminan == "Surat Tanah")
-                                        <option value="BPKB Motor">BPKB Motor</option>
-                                        <option value="BPKB Mobil">BPKB Mobil</option>
-                                        <option value="Surat Tanah" selected>Sertifikat Rumah</option>
-                                    @endif
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="focusedinput" >Nomor ID Jaminan</label>
-                                <input type="number" class="form-control1" placeholder="Nomor ID Jaminan" name="No_Jaminan" required="" value="{{ $result->No_Jaminan }}" readonly>
-                            </div>
 
                             <div class="form-group">
                                 <label for="selector1" >Status</label>
@@ -92,7 +69,7 @@
 
                             <div class="form-group">
                                 <label for="focusedinput" >Keterangan</label>
-                                <input type="number" class="form-control1" placeholder="Keterangan" name="keterangan" required="" value="{{ $result->keterangan }}" >
+                                <input type="text" class="form-control1" placeholder="Keterangan" name="keterangan" required="" value="{{ $result->keterangan }}" >
                             </div>
 
 

@@ -31,6 +31,7 @@
                                                 <th>Nominal</th>
                                                 <th>Sisa Pembayaran</th>
                                                 <th>Status Pembayaran</th>
+                                                <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -49,6 +50,17 @@
                                             <td>@if($value->status_pembayaran == "1") Belum Lunas
                                                 @elseif($value->status_pembayaran == "2") Sudah Lunas
                                                 @endif
+                                            </td>
+                                            <td>
+
+                                                {{--@if(session('Jabatan') == 1)--}}
+                                                <a class="btn-sm btn-info" href="/detailpembayaran/{{ base64_encode($value->id_pembayaran) }}">Select</a><br><br>
+                                                {{--@endif--}}
+                                                {{--@if(session('Jabatan') == 3)--}}
+                                                {{--<a class="btn-sm btn-info" href="/formpembayaran/{{ base64_encode($value->Id_Pembiayaan) }}">Lakukan Pembayaran</a><br><br>--}}
+                                                {{--@endif--}}
+                                                {{--<a class="btn-sm btn-danger" href="/detailpembiayaan/{{ base64_encode($value->Id_Pembiayaan) }}">Detail</a>--}}
+                                                {{--<a class="btn-sm btn-info" href="/editjaminan/{{ base64_encode($value->Id_Pembiayaan) }}">Jaminan</a>--}}
                                             </td>
                                             </tr>
                                             <?php $a++ ?>

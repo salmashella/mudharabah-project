@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\ModelNeraca;
+
 use App\ModelPembayaran;
+use App\ModelNeraca;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 class COTambahPembayaran extends Controller
 {
@@ -100,7 +103,7 @@ class COTambahPembayaran extends Controller
 
         ModelNeraca::create([
             'No_Rekening' => $No_Rekening,
-//            'Id_Pegawai' => $Id_Pegawai,
+            'Id_Pegawai' => Session::get('Id_Pegawai'),
             'debit' => $nominal,
             'kredit' => 0,
             'keterangan' => 'Pembayaran akad Mudharabah dengan No Rekening ' . $No_Rekening
@@ -126,6 +129,33 @@ class COTambahPembayaran extends Controller
      */
     public function show($id)
     {
+        if(!session('isAdminLoggedIn')) {
+            return Redirect::to('login');
+        }
+
+        $id = base64_decode($id);
+
+        $datapembayaran = ModelPembayaran::where('id_pembayaran', $id)->first();
+
+
+        $data = array(
+            'id_pembayaran' => $id,
+            'Id_Pembiayaan' => $datapembayaran,
+//            'estimasi_sisa_cicilan' => $sisacicilan,
+            'No_Rekening' => $datapembayaran,
+            'penyetor' => $datapembayaran,
+            'angsuran_ke' => $datapembayaran,
+            'nominal' => $datapembayaran,
+            'created_at' => $datapembayaran,
+        );
+
+
+        $title = "Pembayaran";
+        $content = view('detailpembayaran');
+
+
+        View::share('id', $id);
+        return view('detailpembayaran', $data);
 
     }
 

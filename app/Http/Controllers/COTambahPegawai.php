@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ModelTambahPegawai;
+use App\ModelAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -73,15 +74,27 @@ class COTambahPegawai extends Controller
             'Password' => $Password,
         ]);
 
-        if($datatambahpegawai)
-        {
+//        if($datatambahpegawai)
+//        {
+////            $data = ModelTambahPegawai::all()->where('Id_Pegawai', '=', $Id_Pegawai)->first();
+////
+////
+////
+////            $dataAdmin = ModelAdmin::create([
+////                'Id_Pegawai' => $Id_Pegawai,
+////            ]);
+////            if($dataAdmin)
+////            {
+////                return Redirect::to('lihatpegawai')->with('message','Berhasil mendapatkan Id Admin ' .$dataAdmin->id_admin);
+////            }
+////            else
+//            {
+//                echo "gagal";
+//            }
             return Redirect::to('lihatpegawai');
         }
-        else
-        {
-            echo "gagal";
-        }
-    }
+
+
 
     /**
      * Display the specified resource.

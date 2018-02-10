@@ -78,7 +78,7 @@ class CODetailPembiayaan extends Controller
         }
 
         $data = array(
-            'id_pembiayaan' => $id,
+            'Id_Pembiayaan' => $id,
             'data_pembiayaan' => $datapembiayaan,
 //            'estimasi_sisa_cicilan' => $sisacicilan,
             'sisa_bayar' => $sisa_bayar,

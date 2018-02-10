@@ -53,6 +53,13 @@ Route::get('/detailpembiayaan/{id}','COTampilPembiayaan@show');
 Route::get('/checkrek/{id}', 'COLihatRekening@checkrek');
 Route::get('/checkbayar/{id}', 'COTambahPembiayaan@checkbayar');
 
+Route::get('/detailpembiayaan/{id}', 'CODetailPembiayaan@show');
+
+//Route::get('/editjaminan/{id}/', 'COJaminan@show');
+Route::resource('editjaminan','COJaminan');
+Route::get('/verifikasipembiayaan/{id}/', 'COPersetujuan@show');
+Route::post('/editjaminan/{id}','COJaminan@update');
+
 //rekening
 //Route::get('/formrekening', 'COTambahRekening@index');
 //Route::post('/tambahrekening', 'COTambahRekening@store');
@@ -67,6 +74,11 @@ Route::post('/editrekening/{id}','COEditRekening@update');
 Route::resource('formpersetujuan','COPersetujuan');
 Route::get('/verifikasipembiayaan/{id}/', 'COPersetujuan@show');
 Route::post('/editpersetujuan/{id}','COPersetujuan@update');
+
+//Surat Kontrak
+Route::get('/suratperjanjian/{id}', 'COSuratPerjanjian@show');
+
+
 //
 //Route::resource('formpersetujuan','COPersetujuan');
 //Route::get('/checkverif/{id}/', 'COPersetujuan@checkverif');
@@ -85,6 +97,8 @@ Route::post('/tambahpembayaran','COTambahPembayaran@store');
 //Route::get('/detailpembayaran/{id}','CODetailPembayaran@show');
 Route::get('/lihatpembayaran', 'COLihatPembayaran@index');
 
+Route::get('/detailpembayaran','COTambahPembayaran@store');
+Route::get('/detailpembayaran/{id}','COTambahPembayaran@show');
 
 ////Cek Rekening
 //Route::get('/pembiayaan/cek', 'COCekRekening@index');
@@ -102,7 +116,7 @@ Route::post('/user/login/check', 'COLoginUser@store');
 
 Route::get('/user/data/{id}', 'COCekDataUser@show');
 
-Route::get('/detailpembiayaan/{id}', 'CODetailPembiayaan@show');
+
 
 
 //REST API
@@ -140,7 +154,9 @@ Route::get('/dtlpembayaran','Pembayaran@index');
 Route::get('/dtlpembayaran/{id}','Pembayaran@show');
 
 
-
+Route::get('/cek', function(){
+   return Session::get('Id_Pegawai');
+});
 
 
 
