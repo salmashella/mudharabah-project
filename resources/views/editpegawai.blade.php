@@ -14,7 +14,7 @@
                     </div>
                     <br>
                     <div class="form-body">
-                        <form class="form-horizontal" action="{{route('editpegawai.update',$result->id)}}" method="post" >
+                        <form class="form-horizontal" action="{{route('editpegawai.update',$result->Id_Pembiayaan)}}" method="post" >
                             {{csrf_field()}}
                             {{method_field('PUT')}}
                             <div class="form-group">

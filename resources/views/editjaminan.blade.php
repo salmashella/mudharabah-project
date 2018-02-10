@@ -12,7 +12,11 @@
                         <h4>Data Lengkap</h4>
                     </div>
                     <div class="form-body">
+<<<<<<< HEAD
                         <form class="form-horizontal"  action="{{route('editjaminan.update',$result->Id_Pembiayaan)}}" method="post" >
+=======
+                        <form class="form-horizontal"  action="{{route('editjaminan.update',$result->Id_Pembiayaan  )}}" method="post" >
+>>>>>>> 551664b288b5248457ae36d2790ecabc49ec5991
                             {{csrf_field()}}
                             {{method_field('PUT')}}
                             {{csrf_field()}}

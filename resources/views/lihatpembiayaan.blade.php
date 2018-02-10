@@ -79,11 +79,8 @@
                                                                 <a class="btn-sm btn-info" href="/verifikasipembiayaan/{{ base64_encode($value->Id_Pembiayaan) }}">Verifikasi</a><br><br>
                                                                 <a class="btn-sm btn-danger" href="/detailpembiayaan/{{ base64_encode($value->Id_Pembiayaan) }}">Detail</a>
                                                             @else
-                                                                {
-
                                                                     <a class="btn-sm btn-info" href="/editjaminan/{{ base64_encode($value->Id_Pembiayaan) }}">Jaminan</a>
                                                                     <a class="btn-sm btn-warning" href="/suratperjanjian/{{base64_encode($value->Id_Pembiayaan)}}">Print Dokumen Akad</a>
-                                                                }
                                                             @endif
 
                                                         </td>
