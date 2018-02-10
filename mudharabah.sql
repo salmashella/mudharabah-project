@@ -28,7 +28,16 @@ CREATE TABLE IF NOT EXISTS `tb_admin` (
   KEY `Id_Nasabah` (`Id_Pegawai`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_admin: ~4 rows (approximately)
+DELETE FROM `tb_admin`;
+/*!40000 ALTER TABLE `tb_admin` DISABLE KEYS */;
+INSERT INTO `tb_admin` (`id`, `id_admin`, `Id_Pegawai`, `created_at`, `updated_at`) VALUES
+	(62, 'PSG0001', 'NSB0001', '2018-01-22 22:45:27', '2018-01-22 22:46:39'),
+	(63, 'PSG0002', 'NSB0002', '2018-01-23 08:11:33', '2018-01-23 08:11:33'),
+	(64, 'PSG0003', 'NSB0003', '2018-01-31 02:48:32', '2018-01-31 02:48:32'),
+	(65, 'PSG0004', 'NSB0004', '2018-02-07 14:25:16', '2018-02-07 14:30:23');
+/*!40000 ALTER TABLE `tb_admin` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_datapasangan
 CREATE TABLE IF NOT EXISTS `tb_datapasangan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -48,7 +57,13 @@ CREATE TABLE IF NOT EXISTS `tb_datapasangan` (
   KEY `Id_Nasabah` (`Id_Nasabah`)
 ) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_datapasangan: ~1 rows (approximately)
+DELETE FROM `tb_datapasangan`;
+/*!40000 ALTER TABLE `tb_datapasangan` DISABLE KEYS */;
+INSERT INTO `tb_datapasangan` (`id`, `Id_Pasangan`, `Id_Nasabah`, `Nama_Pasangan`, `jenis_id_pasangan`, `no_id_pasangan`, `no_telp_pasangan`, `Pekerjaan_Pasangan`, `Jenkel_Pasangan`, `Keterangan`, `created_at`, `updated_at`) VALUES
+	(67, 'PSG0001', 'NSB0001', 'coba pasangan', 'KTP', '09876543212345', '085845453634', 'Guru', 'Laki-Laki', 'coba keterangan', '2018-02-09 23:26:57', '2018-02-09 23:26:57');
+/*!40000 ALTER TABLE `tb_datapasangan` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_datapenghasilan
 CREATE TABLE IF NOT EXISTS `tb_datapenghasilan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -69,7 +84,13 @@ CREATE TABLE IF NOT EXISTS `tb_datapenghasilan` (
   KEY `Id_Nasabah` (`Id_Nasabah`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_datapenghasilan: ~1 rows (approximately)
+DELETE FROM `tb_datapenghasilan`;
+/*!40000 ALTER TABLE `tb_datapenghasilan` DISABLE KEYS */;
+INSERT INTO `tb_datapenghasilan` (`id`, `Id_Penghasilan`, `Id_Nasabah`, `Penghasilan_Istri`, `Penghasilan_Suami`, `Penghasilan_lain`, `Pengeluaran_Pendidikan`, `Pengeluaran_Rumahtangga`, `Pengeluaran_CicilanBank`, `Pengeluaran_Pribadi`, `Pengeluaran_lain`, `created_at`, `updated_at`) VALUES
+	(16, 'DPH0001', 'NSB0001', 0, 0, 0, 0, 0, 0, 0, 0, '2018-02-09 23:26:57', '2018-02-09 23:26:57');
+/*!40000 ALTER TABLE `tb_datapenghasilan` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_jaminan
 CREATE TABLE IF NOT EXISTS `tb_jaminan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -84,7 +105,13 @@ CREATE TABLE IF NOT EXISTS `tb_jaminan` (
   KEY `Id_Pembiayaan` (`Id_Pembiayaan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_jaminan: ~2 rows (approximately)
+DELETE FROM `tb_jaminan`;
+/*!40000 ALTER TABLE `tb_jaminan` DISABLE KEYS */;
+INSERT INTO `tb_jaminan` (`id`, `Id_Pembiayaan`, `jenis_jaminan`, `no_id_jaminan`, `atas_nama`, `status_jaminan`, `created_at`, `updated_at`) VALUES
+	(115, 'PMB0001', 'BPKB Motor', '8752605451545', 'coba aja', 'Sudah Diterima', '2018-02-09 23:32:26', '2018-02-09 23:32:26');
+/*!40000 ALTER TABLE `tb_jaminan` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_jurnal
 CREATE TABLE IF NOT EXISTS `tb_jurnal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -97,7 +124,11 @@ CREATE TABLE IF NOT EXISTS `tb_jurnal` (
   KEY `Id_Pembiayaan` (`No_Rekening`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_jurnal: ~0 rows (approximately)
+DELETE FROM `tb_jurnal`;
+/*!40000 ALTER TABLE `tb_jurnal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_jurnal` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_nasabah
 CREATE TABLE IF NOT EXISTS `tb_nasabah` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -124,7 +155,13 @@ CREATE TABLE IF NOT EXISTS `tb_nasabah` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_nasabah: ~1 rows (approximately)
+DELETE FROM `tb_nasabah`;
+/*!40000 ALTER TABLE `tb_nasabah` DISABLE KEYS */;
+INSERT INTO `tb_nasabah` (`id`, `Id_Nasabah`, `Nama`, `Jenkel`, `Alamat`, `Agama`, `No_Telp`, `Jenis_Identitas`, `No_Identitas`, `Pekerjaan`, `Tempat_Lahir`, `Tanggal_Lahir`, `Nama_Ahliwaris`, `jenis_id_ahliwaris`, `no_id_ahliwaris`, `no_telp_ahliwaris`, `Alamat_Ahliwaris`, `Hubungankeluarga_Ahliwaris`, `created_at`, `updated_at`) VALUES
+	(65, 'NSB0001', 'coba nasabah', 'L', 'coba alamat', 'Islam', '08442655545', 'KTP', '0112548632238', 'Wirausaha', 'Bekasi', '1969-02-10', 'aaaaa', 'KTP', '99787845521002', '', 'Bekasi', 'Anak', '2018-02-09 23:26:57', '2018-02-09 23:26:57');
+/*!40000 ALTER TABLE `tb_nasabah` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_neraca
 CREATE TABLE IF NOT EXISTS `tb_neraca` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -141,7 +178,11 @@ CREATE TABLE IF NOT EXISTS `tb_neraca` (
   KEY `Id_Pegawai` (`Id_Pegawai`)
 ) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_neraca: ~2 rows (approximately)
+DELETE FROM `tb_neraca`;
+/*!40000 ALTER TABLE `tb_neraca` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_neraca` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_pegawai
 CREATE TABLE IF NOT EXISTS `tb_pegawai` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -163,7 +204,16 @@ CREATE TABLE IF NOT EXISTS `tb_pegawai` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_pegawai: ~4 rows (approximately)
+DELETE FROM `tb_pegawai`;
+/*!40000 ALTER TABLE `tb_pegawai` DISABLE KEYS */;
+INSERT INTO `tb_pegawai` (`id`, `Id_Pegawai`, `Nama_Pegawai`, `Alamat`, `Jabatan`, `Jenkel`, `No_Telp`, `Agama`, `Tempat_Lahir`, `Tanggal_Lahir`, `Status`, `Username`, `Password`, `created_at`, `updated_at`) VALUES
+	(9, 'PGW0001', 'Salma', 'Jakarta', '2', 'P', '08338537622', 'Islam', 'Bekasi', '1978-01-21', '1', 'Salma', 'salma', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+	(10, 'PGW0002', 'Shella', 'Jakarta Timur', '1', 'P', '0878785221', 'Islam', 'Jakarta', '1987-01-22', '1', 'shella', 'shella', '2018-01-22 22:43:40', '2018-01-22 22:43:40'),
+	(11, 'PGW0003', 'lina', 'Jakarta', '3', 'P', '08575184215', 'Islam', 'Bekasi', '1986-01-22', '1', 'lina', 'lina', '2018-01-23 10:10:11', '2018-01-23 10:10:11'),
+	(24, 'PGW0004', 'cobaa', 'cobaa', '1', 'L', '085755956481', 'Islam', 'Jakarta', '1973-02-10', '1', 'coba', 'coba', '2018-02-09 23:23:50', '2018-02-09 23:24:10');
+/*!40000 ALTER TABLE `tb_pegawai` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_pembayaran
 CREATE TABLE IF NOT EXISTS `tb_pembayaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -189,7 +239,11 @@ CREATE TABLE IF NOT EXISTS `tb_pembayaran` (
   KEY `Id_Pegawai` (`Id_Pegawai`)
 ) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_pembayaran: ~1 rows (approximately)
+DELETE FROM `tb_pembayaran`;
+/*!40000 ALTER TABLE `tb_pembayaran` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_pembayaran` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_pembiayaan
 CREATE TABLE IF NOT EXISTS `tb_pembiayaan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -215,7 +269,13 @@ CREATE TABLE IF NOT EXISTS `tb_pembiayaan` (
   KEY `Id_Pegawai` (`Id_Pegawai`)
 ) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_pembiayaan: ~1 rows (approximately)
+DELETE FROM `tb_pembiayaan`;
+/*!40000 ALTER TABLE `tb_pembiayaan` DISABLE KEYS */;
+INSERT INTO `tb_pembiayaan` (`id`, `Id_Pembiayaan`, `No_Rekening`, `Id_Nasabah`, `Id_Pegawai`, `tujuan_akad`, `Jangka_Waktu`, `Besar_Pembiayaan`, `Nisbah_Nasabah`, `Nisbah_BMT`, `angsuran_perbulan`, `tanggal_pengajuan`, `Status`, `keterangan`, `created_at`, `updated_at`) VALUES
+	(64, 'PMB0001', 'RK00001', 'NSB0001', '', 'coba pembiayaan', 12, 12000000, 70, 30, 1000000, '2018-02-10 06:32:26', '2', 'pembiayaan baru', '2018-02-09 23:32:26', '2018-02-10 00:20:02');
+/*!40000 ALTER TABLE `tb_pembiayaan` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_perusahaan
 CREATE TABLE IF NOT EXISTS `tb_perusahaan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -235,7 +295,13 @@ CREATE TABLE IF NOT EXISTS `tb_perusahaan` (
   KEY `Id_Nasabah` (`Id_Nasabah`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_perusahaan: ~1 rows (approximately)
+DELETE FROM `tb_perusahaan`;
+/*!40000 ALTER TABLE `tb_perusahaan` DISABLE KEYS */;
+INSERT INTO `tb_perusahaan` (`id`, `Id_Perusahaan`, `Id_Nasabah`, `Nama_Perusahaan`, `no_siup`, `No_Telp_Perusahaan`, `Alamat_Perusahaan`, `Bidang_Usaha`, `Berdiri_Sejak`, `Status`, `created_at`, `updated_at`) VALUES
+	(18, 'PRS0001', 'NSB0001', 'Indojasa', '995648452652', '08541515484', 'Jakarta Pusat', 'Furniture', '1994-02-09', 'Aktif', '2018-02-09 23:26:57', '2018-02-09 23:26:57');
+/*!40000 ALTER TABLE `tb_perusahaan` ENABLE KEYS */;
+
 -- Dumping structure for table mudharabah.tb_rekening
 CREATE TABLE IF NOT EXISTS `tb_rekening` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -250,7 +316,13 @@ CREATE TABLE IF NOT EXISTS `tb_rekening` (
   KEY `Id_Nasabah` (`Id_Nasabah`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
--- Data exporting was unselected.
+-- Dumping data for table mudharabah.tb_rekening: ~1 rows (approximately)
+DELETE FROM `tb_rekening`;
+/*!40000 ALTER TABLE `tb_rekening` DISABLE KEYS */;
+INSERT INTO `tb_rekening` (`id`, `No_Rekening`, `Id_Nasabah`, `Saldo`, `Status`, `created_at`, `updated_at`) VALUES
+	(14, 'RK00001', 'NSB0001', 0, '1', '2018-02-09 23:26:57', '2018-02-09 23:26:57');
+/*!40000 ALTER TABLE `tb_rekening` ENABLE KEYS */;
+
 -- Dumping structure for trigger mudharabah.tb_admin_trigger
 SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 DELIMITER //

@@ -122,10 +122,10 @@ class COJaminan extends Controller
         $result = $data->save();
 
         if($result) {
-            return Redirect::to('/lihatpembiayaan')->with('message', 'Data pembiayaan dengan ID ' . $id . ' berhasil disetujui');
+            return Redirect::to('/lihatpembiayaan')->with('message', 'Data pembiayaan dengan ID ' . $id . ' berhasil diubah');
         }
         else {
-            return Redirect::to('/lihatpembiayaan')->with('message', 'Data pembiayaan dengan ID ' . $id . ' gagal disetujui');
+            return Redirect::to('/lihatpembiayaan')->with('message', 'Data pembiayaan dengan ID ' . $id . ' gagal diubah');
         }
 
 
